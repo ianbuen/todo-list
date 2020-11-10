@@ -1,0 +1,26 @@
+<%- include("header"); -%>
+
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
+
+
+<div class="box">
+  <!-- create dynamic list items -->
+  <form action="/delete" name="taskname" method="post">
+    <% tasks.forEach((task) => { %>
+      <div class="item">
+        <input type="checkbox" name="checkbox" onchange="this.form.submit()" value="<%= task._id %>">
+        <p><%= task.name %></p>
+      </div>
+    <% }); %>
+  </form>
+
+
+  <form action="<%= route %>" name="taskadd" method="post">
+    <input type="text" name="txtTask" placeholder="New Task" autocomplete="off" autofocus>
+    <button type="submit">+</button>
+  </form>
+</div>
+
+<%- include("footer"); -%>
